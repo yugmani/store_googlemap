@@ -3,7 +3,9 @@ var map;
 var markers = [];
 var infoWindow;
 var locationSelect;
-
+var guy = "AIzaSyCnnPy1hSZGUjTYCsz0O7tXcfqOlVJh8oM";
+var yug = guy;
+//function to initialize the map
 function initMap() {
     var losangeles = {
         lat: 34.063380, 
@@ -20,7 +22,7 @@ function initMap() {
 }
 
 
-
+//function to show store markers
 function showStoreMarkers() {
     // console.log(stores);
     stores.forEach(function(store, index){
@@ -34,6 +36,8 @@ function showStoreMarkers() {
     })
 }
 
+
+//function to create markers
 function createMarker(latlng, name, address){
     var html = "<b>" + name+ "</b> <br />" + address;
     var marker = new google.maps.Marker({

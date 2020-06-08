@@ -1,3 +1,11 @@
+# Google Map Store Locator
+
+## Google Maps Platform
+* https://developers.google.com/maps/solutions/store-locator/clothing-store-locator
+
+## Getting Google Api Key 
+* https://console.cloud.google.com/apis/credentials/key/391ba066-3c84-4ef6-81a5-e0053c980a97?project=website-design-p-1572672361173
+
 # Plan Of Action
 
 - Import Google Maps into the Window
