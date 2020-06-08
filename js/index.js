@@ -3,7 +3,7 @@ var map;
 var markers = [];
 var infoWindow;
 var locationSelect;
-var yug = "AIzaSyAPPpD9oSjRKGMyEPwaTfy3dO_YXfw9C7U"
+
 
 
 //function to initialize the map
