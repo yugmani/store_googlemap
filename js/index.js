@@ -3,8 +3,9 @@ var map;
 var markers = [];
 var infoWindow;
 var locationSelect;
-var guy = "AIzaSyCnnPy1hSZGUjTYCsz0O7tXcfqOlVJh8oM";
-var yug = guy;
+var yug = "AIzaSyCnnPy1hSZGUjTYCsz0O7tXcfqOlVJh8oM";
+
+
 //function to initialize the map
 function initMap() {
     var losangeles = {
