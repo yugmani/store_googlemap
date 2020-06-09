@@ -71,16 +71,18 @@ function showStoreMarkers() {
                 // console.log(latlng);
             var name = store.name;
             var address = store.addressLines[0];
-
+            var phone = store.phoneNumber;
             bounds.extend(latlng);
-            createMarker(latlng, name, address);
+            createMarker(latlng, name, address, phone);
     })
     map.fitBounds(bounds);
 }
 
 //function to create markers
-function createMarker(latlng, name, address){
-    var html = "<b>" + name+ "</b> <br />" + address;
+function createMarker(latlng, name, address, index){
+    var html = `<b>${name} ${index+1}</b><br />`;
+    html += `${address}<br />`;
+    html += `${phone}`;
     var marker = new google.maps.Marker({
         map: map,
         position: latlng
