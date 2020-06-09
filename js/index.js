@@ -79,7 +79,7 @@ function showStoreMarkers() {
 }
 
 //function to create markers
-function createMarker(latlng, name, address, index){
+function createMarker(latlng, name, address, phone, index){
     var html = `<b>${name} ${index+1}</b><br />`;
     html += `${address}<br />`;
     html += `${phone}`;
