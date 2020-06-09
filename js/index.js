@@ -13,7 +13,7 @@ function initMap() {
     };
     map = new google.maps.Map(document.getElementById('map'), {
       center: losangeles,
-      zoom: 50,
+      zoom: 11,
     });
 
     infoWindow = new google.maps.InfoWindow();
@@ -80,9 +80,9 @@ function showStoreMarkers() {
 
 //function to create markers
 function createMarker(latlng, name, address, phone, index){
-    var html = `<b>${name} ${index+1}</b><br />`;
-    html += `${address}<br />`;
-    html += `${phone}`;
+    var html = `<div id="info"><div id="description"><b>${name} <span>${index+1}<span></b><br />`;
+    html += `${address}<br /></div>`;
+    html += `<div id="ph"><i class="fas fa-phone-volume"></i> ${phone}</div></div>`;
     var marker = new google.maps.Marker({
         map: map,
         position: latlng

@@ -23,7 +23,7 @@ body {
 
 #search-box {
     position:absolute;
-    top:30px;
+    top:50px;
     left:50px;
     z-index:100;
     color:white;
@@ -71,7 +71,7 @@ input::placeholder {
     height:500px;
     background-color:white;
     position:absolute;
-    top:150px;
+    top:180px;
     left:50px;
     z-index:100;
     color:black;
@@ -158,6 +158,31 @@ input::placeholder {
       background-color:lightgray;
   }
 
-  infoWindow {
-      background-color:whitesmoke;
+
+ #info span{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      font-size:12px;
+      color:black;
+      background-color:yellow;
+      padding:3px;
+      text-align:center;
+      justify-content: center;
+      margin:0 auto;
+  }
+
+  #info {
+    margin:0;
+    background-color:whitesmoke;
+    padding:5px;
+  }
+
+  #description {
+      border-bottom:1px dashed gray;
+      padding:5px 0px;
+  }
+
+  #ph {
+    padding:5px 0px;
   }
