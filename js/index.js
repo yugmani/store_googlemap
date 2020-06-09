@@ -73,7 +73,7 @@ function showStoreMarkers() {
             var address = store.addressLines[0];
             var phone = store.phoneNumber;
             bounds.extend(latlng);
-            createMarker(latlng, name, address, phone);
+            createMarker(latlng, name, address, phone, index);
     })
     map.fitBounds(bounds);
 }
