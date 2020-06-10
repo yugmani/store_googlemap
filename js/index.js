@@ -1,4 +1,3 @@
-
 var map;
 var markers = [];
 var infoWindow;
@@ -30,7 +29,8 @@ function displayStores() {
         // console.log(store);
         var address = store.addressLines;
         var phone = store.phoneNumber;
-        console.log(address.length);
+        // console.log(address.length);
+
         storesHtml +=
         `<div class="store-container">
         <div class="store-info-container">
@@ -59,7 +59,6 @@ function displayStores() {
     document.querySelector('.stores-list').innerHTML = storesHtml;
 }
 
-
 //function to show store markers
 function showStoreMarkers() {
     var bounds = new google.maps.LatLngBounds();
@@ -70,19 +69,30 @@ function showStoreMarkers() {
                         store.coordinates.longitude);
                 // console.log(latlng);
             var name = store.name;
-            var address = store.addressLines[0];
+            var address = store.addressLines;
             var phone = store.phoneNumber;
+            var openStatus = store.openStatusText;
             bounds.extend(latlng);
-            createMarker(latlng, name, address, phone, index);
+            createMarker(latlng, name, openStatus, address, phone, index);
     })
     map.fitBounds(bounds);
 }
 
 //function to create markers
-function createMarker(latlng, name, address, phone, index){
-    var html = `<div id="info"><div id="description"><b>${name} <span>${index+1}<span></b><br />`;
-    html += `${address}<br /></div>`;
-    html += `<div id="ph"><i class="fas fa-phone-volume"></i> ${phone}</div></div>`;
+function createMarker(latlng, name, openStatus, address, phone, index){
+    // console.log(address);
+    console.log(address[0]);
+    var html = `<div class="info-store-window">
+                    <div class="info-store-description">
+                        <div class="info-store-name"><b>${name}</b></div>
+                        <div class ="index-number">${index+1}</div>
+                    </div>
+                    <div class="info-store-details">
+                        <div class="info-store-address"><i class="fas fa-location-arrow"></i> ${address[0]}</div>
+                        <div class="info-store-status">${openStatus}</div>
+                        <div class="info-store-phone"><i class="fas fa-phone-volume"></i> ${phone}</div>
+                    </div>
+                </div>`;
     var marker = new google.maps.Marker({
         map: map,
         position: latlng
@@ -95,4 +105,3 @@ function createMarker(latlng, name, address, phone, index){
 
     markers.push(marker);
 }
-

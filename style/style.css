@@ -13,22 +13,26 @@ body {
     height: 100vh;
 }
 
-.title {
-    /* position:absolute; */
-    font-size:45px;
-    color:#333;
-    text-transform:uppercase;
-    font-weight:bold;
-}
-
 #search-box {
     position:absolute;
     top:50px;
     left:50px;
     z-index:100;
     color:white;
+    background-color:whitesmoke;
+    padding:10px;
+    border-radius:20px;
 }
 
+.title {
+    /* position:absolute; */
+    font-size:45px;
+    color:#333;
+    text-transform:uppercase;
+    font-weight:bold;
+    padding:5px;
+    opacity:0.8;
+}
 .search {
     width:300px;
     height:100%;
@@ -126,8 +130,8 @@ input::placeholder {
 
 .store-number {
     display:flex;
-    width:30px;
-    height:30px;
+    width:25px;
+    height:25px;
     background-color:#454E53;
     color:white;
     align-items:center;
@@ -158,31 +162,47 @@ input::placeholder {
       background-color:lightgray;
   }
 
-
- #info span{
-      width:30px;
-      height:30px;
-      border-radius:50%;
-      font-size:12px;
-      color:black;
-      background-color:yellow;
-      padding:3px;
-      text-align:center;
-      justify-content: center;
-      margin:0 auto;
+  .store-info-window {
+    margin:0;
+    padding:5px;
+    font-size:12px;
+    border:none;
+    outline:none;
   }
 
-  #info {
-    margin:0;
+  .info-store-description {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      text-align:center;
+      background-color:lightgray;
+      padding:5px;
+  }
+
+ .index-number {
+      width:20px;
+      height:20px;
+      border-radius:50%;
+      color:black;
+      background-color:yellow;
+      padding:2px;
+      align-items:center;
+      text-align:center;
+     
+  }
+
+  .info-store-address {
+    border-bottom:1px dashed black;
+    padding:5px 0px;
     background-color:whitesmoke;
+  }
+
+  .info-store-status {
+    background-color:silver;
     padding:5px;
   }
 
-  #description {
-      border-bottom:1px dashed gray;
-      padding:5px 0px;
-  }
-
-  #ph {
-    padding:5px 0px;
+  .info-store-phone {
+    background-color:whitesmoke;
+    padding:5px;
   }
