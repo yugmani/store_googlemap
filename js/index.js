@@ -16,14 +16,55 @@ function initMap() {
     });
 
     infoWindow = new google.maps.InfoWindow();
-    //call displayStores function
-    displayStores();
-    //call showStoreMarkers function
-    showStoreMarkers();
+    searchStores();
+    setOnClickListener();
 }
 
 
-function displayStores() {
+function searchStores (){
+    var foundStores = [];
+    var zipCode = document.getElementById("zip-code-input").value;
+    if(zipCode){
+        stores.forEach(function(store){
+            var postal = store.address.postalCode.substring(0, 5);
+            if(postal === zipCode){
+                foundStores.push(store);
+            }
+        });
+    } 
+    else {
+        foundStores = stores;
+    }
+    clearLocations();
+    displayStores(foundStores);
+    showStoreMarkers(foundStores);
+    setOnClickListener()
+}
+
+
+function clearLocations(){
+    infoWindow.close();
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers.length = 0;
+}
+
+
+function setOnClickListener(){
+    
+    var storeElements = document.querySelectorAll(".store-container");
+    
+    storeElements.forEach(function(elem, index){
+        // console.log(elem+" "+index);
+        elem.addEventListener("click", function(){
+            google.maps.event.trigger(markers[index], 'click');
+        })
+    });
+}
+
+
+function displayStores(stores) {
     var storesHtml = "";
     stores.forEach(function(store, index){
         // console.log(store);
@@ -33,25 +74,27 @@ function displayStores() {
 
         storesHtml +=
         `<div class="store-container">
-        <div class="store-info-container">
-            <div class="store-address">`;
-        
-            if (address.length>2){
-                storesHtml += `<span>${address[0]} ${address[1]}</span>
-                <span>${address[2]}</span>`;
-            }
-            else {
-                storesHtml += `<span>${address[0]}</span>
-                <span>${address[1]}</span>`;
-            }
-                // <!-- <i class="fas fa-map-marker-alt"></i> -->
-                storesHtml += `</div>
-            <div class="store-phone-number"><i class="fas fa-phone-volume"></i>  ${phone}</div>
-        </div>
-            <div class="store-number-container">
-                <div class="store-number">
-                   ${index+1}
+            <div class="store-container-background">
+                <div class="store-info-container">
+                    <div class="store-address">`;
+                
+                    if (address.length>2){
+                        storesHtml += `<span>${address[0]} ${address[1]}</span>
+                        <span>${address[2]}</span>`;
+                    }
+                    else {
+                        storesHtml += `<span>${address[0]}</span>
+                        <span>${address[1]}</span>`;
+                    }
+                        // <!-- <i class="fas fa-map-marker-alt"></i> -->
+                        storesHtml += `</div>
+                    <div class="store-phone-number"><i class="fas fa-phone-volume"></i>  ${phone}</div>
                 </div>
+                    <div class="store-number-container">
+                        <div class="store-number">
+                        ${index+1}
+                        </div>
+                    </div>
             </div>
     </div>`;
 
@@ -60,7 +103,7 @@ function displayStores() {
 }
 
 //function to show store markers
-function showStoreMarkers() {
+function showStoreMarkers(stores) {
     var bounds = new google.maps.LatLngBounds();
         stores.forEach(function(store, index){
             // console.log(stores);
@@ -80,8 +123,7 @@ function showStoreMarkers() {
 
 //function to create markers
 function createMarker(latlng, name, openStatus, address, phone, index){
-    // console.log(address);
-    console.log(address[0]);
+    
     var html = `<div class="info-store-window">
                     <div class="info-store-description">
                         <div class="info-store-name"><b>${name}</b></div>
@@ -95,13 +137,15 @@ function createMarker(latlng, name, openStatus, address, phone, index){
                 </div>`;
     var marker = new google.maps.Marker({
         map: map,
-        position: latlng
+        position: latlng,
+        label: `${index+1}`
     });
 
-    google.maps.event.addListener(marker, 'mouseover', function() {
+    google.maps.event.addListener(marker, 'click', function() {
         infoWindow.setContent(html);
         infoWindow.open(map, marker);
       });
 
     markers.push(marker);
 }
+
